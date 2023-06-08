@@ -12,11 +12,9 @@ pipeline{
             }
             steps{
                 script{
-                    withSonarQubeEnv('My SonarQube Server', envOnly: true) {
-                       //  withSonarQubeEnv(credentialsId: 'sonartoken') {
+                    withSonarQubeEnv(credentialsId: 'sonartoken') {
                             sh 'chmod +x gradlew'
                             sh './gradlew sonarqube'
-                            println ${env.SONAR_HOST_URL} 
                     }
 
                   /*  timeout(time: 1, unit: 'HOURS') {
